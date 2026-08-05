@@ -1,0 +1,70 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.7/schema.json",
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "complexity": {
+        "noExcessiveCognitiveComplexity": {
+          "level": "info",
+          "options": {
+            "maxAllowedComplexity": 25
+          }
+        }
+      },
+      "preset": "all",
+      "style": {
+        "noContinue": "off",
+        "noIncrementDecrement": "off",
+        "noMagicNumbers": "off",
+        "noNestedTernary": "off",
+        "noTernary": "off",
+        "useDestructuring": {
+          "level": "info",
+          "options": {
+            "assignmentExpression": {
+              "array": false,
+              "object": false
+            }
+          }
+        },
+        "useNamingConvention": "off"
+      }
+    }
+  },
+  "vcs": {
+    "clientKind": "git",
+    "enabled": true,
+    "useIgnoreFile": true
+  },
+
+  "overrides": [
+    {
+      "includes": ["*.config.ts", "*rc.mjs"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    }
+  ]
+}

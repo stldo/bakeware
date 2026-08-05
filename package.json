@@ -1,0 +1,113 @@
+{
+  "name": "bakeware",
+  "version": "0.0.1",
+  "author": "stldo (https://github.com/stldo)",
+  "description": "Vanilla-extract utility functions to simplify layout, rhythm, and styling",
+  "keywords": [
+    "vanilla-extract",
+    "css",
+    "styling",
+    "rhythm",
+    "typography"
+  ],
+  "license": "MIT",
+  "repository": "github:stldo/bakeware",
+  "dependencies": {
+    "@colordx/core": "^5.5.0",
+    "url-slug": "^5.0.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.7",
+    "csstype": "^3.2.3",
+    "es-check": "^9.6.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.3.0",
+    "publint": "^0.3.23",
+    "tsdown": "^0.22.14",
+    "type-fest": "^5.8.0",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "peerDependencies": {
+    "@vanilla-extract/css": "^1.21.2",
+    "csstype": "^3.2.3",
+    "type-fest": "^5.8.0"
+  },
+  "exports": {
+    "./alpha": {
+      "import": "./dist/alpha.mjs",
+      "require": "./dist/alpha.cjs"
+    },
+    "./animation": {
+      "import": "./dist/animation.mjs",
+      "require": "./dist/animation.cjs"
+    },
+    "./breakpoints": {
+      "import": "./dist/breakpoints.mjs",
+      "require": "./dist/breakpoints.cjs"
+    },
+    "./create-theme": {
+      "import": "./dist/create-theme.mjs",
+      "require": "./dist/create-theme.cjs"
+    },
+    "./font-face": {
+      "import": "./dist/font-face.mjs",
+      "require": "./dist/font-face.cjs"
+    },
+    "./global-style": {
+      "import": "./dist/global-style.mjs",
+      "require": "./dist/global-style.cjs"
+    },
+    "./global-styles": {
+      "import": "./dist/global-styles.mjs",
+      "require": "./dist/global-styles.cjs"
+    },
+    "./normalize": {
+      "import": "./dist/normalize.mjs",
+      "require": "./dist/normalize.cjs"
+    },
+    "./spacing": {
+      "import": "./dist/spacing.mjs",
+      "require": "./dist/spacing.cjs"
+    },
+    "./style": {
+      "import": "./dist/style.mjs",
+      "require": "./dist/style.cjs"
+    },
+    "./transition": {
+      "import": "./dist/transition.mjs",
+      "require": "./dist/transition.cjs"
+    },
+    "./type-scale": {
+      "import": "./dist/type-scale.mjs",
+      "require": "./dist/type-scale.cjs"
+    },
+    "./vertical-rhythm": {
+      "import": "./dist/vertical-rhythm.mjs",
+      "require": "./dist/vertical-rhythm.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "build": "tsdown",
+    "check": "npm run check:cjs && npm run check:mjs && npm run check:publint",
+    "check:cjs": "es-check es2022 './dist/*.cjs'",
+    "check:mjs": "es-check es2022 './dist/*.mjs' --module",
+    "check:publint": "publint",
+    "format": "biome check --no-errors-on-unmatched --write",
+    "lint": "biome check --no-errors-on-unmatched",
+    "postversion": "git push && git push --tags",
+    "prepack": "npm run validate",
+    "prepare": "husky",
+    "preversion": "npm run validate",
+    "typecheck": "tsc --noEmit",
+    "validate": "npm run typecheck && npm run lint && npm run build && npm run check"
+  }
+}
