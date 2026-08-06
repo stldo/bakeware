@@ -2,7 +2,7 @@
   "name": "bakeware",
   "version": "0.0.1",
   "author": "stldo (https://github.com/stldo)",
-  "description": "Vanilla-extract utility functions to simplify layout, rhythm, and styling",
+  "description": "Utility library handling the basic ingredients of styling, built to work alongside vanilla-extract",
   "keywords": [
     "vanilla-extract",
     "css",
