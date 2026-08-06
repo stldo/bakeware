@@ -4,14 +4,30 @@
   "author": "stldo (https://github.com/stldo)",
   "description": "Utility library handling the basic ingredients of styling, built to work alongside vanilla-extract",
   "keywords": [
-    "vanilla-extract",
+    "animation",
+    "breakpoints",
     "css",
-    "styling",
+    "css-in-js",
+    "css-layers",
+    "css-utils",
+    "font-face",
+    "layer",
+    "media-queries",
+    "normalize",
     "rhythm",
-    "typography"
+    "spacing",
+    "styling",
+    "transition",
+    "type-scale",
+    "typography",
+    "vanilla-extract",
+    "vertical-rhythm"
   ],
   "license": "MIT",
-  "repository": "github:stldo/bakeware",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stldo/bakeware.git"
+  },
   "dependencies": {
     "@colordx/core": "^5.5.0",
     "url-slug": "^5.0.1"
