@@ -1,6 +1,6 @@
 {
   "name": "bakeware",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "stldo (https://github.com/stldo)",
   "description": "Utility library handling the basic ingredients of styling, built to work alongside vanilla-extract",
   "keywords": [
