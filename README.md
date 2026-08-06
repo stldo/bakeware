@@ -1,4 +1,4 @@
-# bakeware ![License][1] [![npm][2]][3]
+# bakeware ![License][1] [![Build status][2]][3] [![npm][4]][5]
 
 - Utility functions for **vanilla-extract**
 - **TypeScript-ready**, with built-in type definitions
@@ -526,6 +526,8 @@ globalStyles("reset", {
 Copyright (C) 2026-present stldo
 
 [1]: https://img.shields.io/github/license/stldo/bakeware
-[2]: https://img.shields.io/npm/v/bakeware
-[3]: https://www.npmjs.com/package/bakeware
+[2]: https://img.shields.io/github/actions/workflow/status/stldo/bakeware/validate.yml?branch=main
+[3]: https://github.com/stldo/bakeware/actions/workflows/validate.js.yml
+[4]: https://img.shields.io/npm/v/bakeware
+[5]: https://www.npmjs.com/package/bakeware
 [license]: ./LICENSE
