@@ -527,7 +527,7 @@ Copyright (C) 2026-present stldo
 
 [1]: https://img.shields.io/github/license/stldo/bakeware
 [2]: https://img.shields.io/github/actions/workflow/status/stldo/bakeware/validate.yml?branch=main
-[3]: https://github.com/stldo/bakeware/actions/workflows/validate.js.yml
+[3]: https://github.com/stldo/bakeware/actions/workflows/validate.yml
 [4]: https://img.shields.io/npm/v/bakeware
 [5]: https://www.npmjs.com/package/bakeware
 [license]: ./LICENSE
