@@ -1,9 +1,9 @@
 import {
-  type GlobalStylesRulesWithoutLayer,
+  type GlobalStylesLayerRules,
   globalStyles,
 } from "#/core/global-styles.ts";
 
-const STYLES: GlobalStylesRulesWithoutLayer = {
+const STYLES: GlobalStylesLayerRules = {
   "*, *::before, *::after": {
     boxSizing: "border-box",
   },
@@ -166,6 +166,6 @@ export function normalize(layer?: string): void {
   if (layer === undefined) {
     globalStyles(STYLES);
   } else {
-    globalStyles(layer, STYLES);
+    globalStyles({ "@layer": { [layer]: STYLES } });
   }
 }

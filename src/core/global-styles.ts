@@ -1,33 +1,31 @@
-import type { GlobalStyleRule } from "@vanilla-extract/css";
-import {
-  type GlobalStylesRuleWithoutLayer,
-  globalStyle,
-} from "#/core/global-style.ts";
+import { type GlobalStyleRule, globalStyle } from "@vanilla-extract/css";
 
-export type GlobalStylesRules = Record<string, GlobalStyleRule>;
-
-export type GlobalStylesRulesWithoutLayer = Record<
+export type GlobalStylesLayerRules = Record<
   string,
-  GlobalStylesRuleWithoutLayer
+  Omit<GlobalStyleRule, "@layer">
 >;
 
-export function globalStyles(rules: GlobalStylesRules): void;
-export function globalStyles(
-  layer: string,
-  rules: GlobalStylesRulesWithoutLayer,
-): void;
-export function globalStyles(
-  ...args:
-    | [rules: GlobalStylesRules]
-    | [layer: string, rules: GlobalStylesRulesWithoutLayer]
-) {
-  const [layer, rules] = args.length === 2 ? args : [null, args[0]];
+export type GlobalStylesRules = Record<
+  string,
+  GlobalStyleRule | Record<string, GlobalStylesLayerRules>
+> & {
+  "@layer"?: Record<string, GlobalStylesLayerRules>;
+};
 
+export function globalStyles(rules: GlobalStylesRules): void {
   for (const selector of Object.keys(rules)) {
-    if (layer === null) {
-      globalStyle(selector, rules[selector]);
+    if (selector === "@layer" && rules[selector]) {
+      for (const layer of Object.keys(rules[selector])) {
+        const layerRules = rules[selector][layer];
+
+        for (const layerSelector of Object.keys(layerRules)) {
+          globalStyle(layerSelector, {
+            "@layer": { [layer]: layerRules[layerSelector] },
+          });
+        }
+      }
     } else {
-      globalStyle(layer, selector, rules[selector]);
+      globalStyle(selector, rules[selector]);
     }
   }
 }
