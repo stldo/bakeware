@@ -14,38 +14,6 @@
 npm install bakeware
 ```
 
-### `style(layer?, rule, debugId?)`
-
-Extends vanilla-extract's `style`, enabling a cleaner way to implement layers. If `layer` is not set, it behaves like the original function.
-
-||Description|Default|
-|---|---|---|
-|`layer`|CSS `@layer` name.|`undefined`|
-|`rule`|—|—|
-|`debugId`|—|`undefined`|
-
-```javascript
-import { style } from "bakeware";
-
-// With layer
-const withLayer = style("base", {
-  color: "blue",
-});
-// @layer base {
-//   .withLayer {
-//     color: blue;
-//   }
-// }
-
-// Without layer
-const withoutLayer = style({
-  color: "red",
-});
-// .withoutLayer {
-//   color: red;
-// }
-```
-
 ### `spacing(...values, options?)`
 
 Generates a space-separated string of values, following CSS conventions.
@@ -186,7 +154,8 @@ Makes implementing CSS transitions easy.
 |`options.timingFunction`|—|`"ease"`|
 
 ```javascript
-import { style, transition } from "bakeware";
+import { style } from "@vanilla-extract/css";
+import { transition } from "bakeware";
 
 const example = style({
   transition: transition("opacity", "transform", {
@@ -257,7 +226,8 @@ Makes implementing CSS animations easy.
 
 ```javascript
 import { keyframes } from "@vanilla-extract/css";
-import { animation, style } from "bakeware";
+import { style } from "@vanilla-extract/css";
+import { animation } from "bakeware";
 
 const fade = keyframes({
   from: {
@@ -370,7 +340,8 @@ fontFace([
 Generates a set of media query strings for a given collection of breakpoints.
 
 ```javascript
-import { breakpoints, style } from "bakeware";
+import { style } from "@vanilla-extract/css";
+import { breakpoints } from "bakeware";
 
 const breakpoint = breakpoints({
   sm: "600px",
@@ -462,44 +433,18 @@ createTheme.var(vars.example);
 // "#000"
 ```
 
-### `globalStyle(layer?, selector, rule)`
+### `globalStyles(rules)`
 
-Extends vanilla-extract's `globalStyle`, enabling a cleaner way to implement layers. If `layer` is not set, it behaves like the original function.
-
-||Description|Default|
-|---|---|---|
-|`layer`|CSS `@layer` name.|`undefined`|
-|`selector`|—|—|
-|`rule`|—|—|
-
-```javascript
-import { globalStyle } from "bakeware";
-
-globalStyle("reset", "*", {
-  boxSizing: "border-box",
-});
-// @layer reset;
-//
-// @layer reset {
-//   * {
-//     box-sizing: border-box;
-//   }
-// }
-```
-
-### `globalStyles(layer?, rules)`
-
-Sets global styles all at once, with layer support.
+Sets global styles for multiple selectors. The rules object accepts the same selector-based global styles as vanilla-extract, with optional top-level named layers.
 
 ||Description|Default|
 |---|---|---|
-|`layer`|CSS `@layer` name.|`undefined`|
-|`rules`|Object containing selectors as keys and rules as values.|—|
+|`rules`|Object containing selectors and optional named layers.|—|
 
 ```javascript
 import { globalStyles } from "bakeware";
 
-globalStyles("reset", {
+globalStyles({
   "*": {
     boxSizing: "border-box",
   },
@@ -507,16 +452,50 @@ globalStyles("reset", {
     display: "inline-block",
   },
 });
-// @layer reset;
-//
+```
+
+Top-level `@layer` groups selectors under named CSS layers:
+
+```javascript
+globalStyles({
+  "@layer": {
+    reset: {
+      "*": {
+        boxSizing: "border-box",
+      },
+      html: {
+        blockSize: "100%",
+      },
+    },
+    components: {
+      button: {
+        cursor: "pointer",
+      },
+    },
+  },
+});
 // @layer reset {
-//   * {
-//     box-sizing: border-box;
-//   }
-//   svg {
-//     display: inline-block;
-//   }
+//   * { box-sizing: border-box; }
+//   html { block-size: 100%; }
 // }
+//
+// @layer components {
+//   button { cursor: pointer; }
+// }
+```
+
+Selector-level `@layer` rules continue to use vanilla-extract's existing syntax:
+
+```javascript
+globalStyles({
+  body: {
+    "@layer": {
+      base: {
+        margin: 0,
+      },
+    },
+  },
+});
 ```
 
 ## License
