@@ -84,10 +84,6 @@
       "import": "./dist/spacing.mjs",
       "require": "./dist/spacing.cjs"
     },
-    "./style": {
-      "import": "./dist/style.mjs",
-      "require": "./dist/style.cjs"
-    },
     "./transition": {
       "import": "./dist/transition.mjs",
       "require": "./dist/transition.cjs"

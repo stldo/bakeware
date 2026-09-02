@@ -14,38 +14,6 @@
 npm install bakeware
 ```
 
-### `style(layer?, rule, debugId?)`
-
-Extends vanilla-extract's `style`, enabling a cleaner way to implement layers. If `layer` is not set, it behaves like the original function.
-
-||Description|Default|
-|---|---|---|
-|`layer`|CSS `@layer` name.|`undefined`|
-|`rule`|—|—|
-|`debugId`|—|`undefined`|
-
-```javascript
-import { style } from "bakeware";
-
-// With layer
-const withLayer = style("base", {
-  color: "blue",
-});
-// @layer base {
-//   .withLayer {
-//     color: blue;
-//   }
-// }
-
-// Without layer
-const withoutLayer = style({
-  color: "red",
-});
-// .withoutLayer {
-//   color: red;
-// }
-```
-
 ### `spacing(...values, options?)`
 
 Generates a space-separated string of values, following CSS conventions.
@@ -186,7 +154,8 @@ Makes implementing CSS transitions easy.
 |`options.timingFunction`|—|`"ease"`|
 
 ```javascript
-import { style, transition } from "bakeware";
+import { style } from "@vanilla-extract/css";
+import { transition } from "bakeware";
 
 const example = style({
   transition: transition("opacity", "transform", {
@@ -257,7 +226,8 @@ Makes implementing CSS animations easy.
 
 ```javascript
 import { keyframes } from "@vanilla-extract/css";
-import { animation, style } from "bakeware";
+import { style } from "@vanilla-extract/css";
+import { animation } from "bakeware";
 
 const fade = keyframes({
   from: {
@@ -370,7 +340,8 @@ fontFace([
 Generates a set of media query strings for a given collection of breakpoints.
 
 ```javascript
-import { breakpoints, style } from "bakeware";
+import { style } from "@vanilla-extract/css";
+import { breakpoints } from "bakeware";
 
 const breakpoint = breakpoints({
   sm: "600px",
