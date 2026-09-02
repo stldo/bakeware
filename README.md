@@ -2,7 +2,6 @@
 
 - Utility functions for **vanilla-extract**
 - **TypeScript-ready**, with built-in type definitions
-- Simplifies working with **@layer**
 - Supports **type scale** and **vertical rhythm** out of the box
 - **normalize** helper suited for 2026 usage
 - Access **custom property values** from themes
