@@ -72,10 +72,6 @@
       "import": "./dist/font-face.mjs",
       "require": "./dist/font-face.cjs"
     },
-    "./global-style": {
-      "import": "./dist/global-style.mjs",
-      "require": "./dist/global-style.cjs"
-    },
     "./global-styles": {
       "import": "./dist/global-styles.mjs",
       "require": "./dist/global-styles.cjs"
